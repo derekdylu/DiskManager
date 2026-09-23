@@ -4,7 +4,7 @@
 
 A native macOS app (SwiftUI) to compare, sync and clean up two storage locations — external drives, local folders, or any two folders. It was originally built to manage two external drives kept in different places (A: 8 TB, B: 10 TB) that only occasionally get plugged into the same Mac. The UI is bilingual (Traditional Chinese / English) and can be switched live from the toolbar.
 
-**[Website](https://derekdylu.github.io/DiskManager/)** · **[Download for Mac](https://github.com/derekdylu/DiskManager/releases/latest)** · [Install guide](https://derekdylu.github.io/DiskManager/#install)
+**[Website](https://disk-manager.derekdylu.com/)** · **[Download for Mac](https://github.com/derekdylu/DiskManager/releases/latest)** · [Install guide](https://disk-manager.derekdylu.com/#install)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/shots/en-dark-sync.jpg">
@@ -25,7 +25,7 @@ A native macOS app (SwiftUI) to compare, sync and clean up two storage locations
 
 3. Enable DiskManager under **System Settings › Privacy & Security › Full Disk Access** (see [Permissions](#permissions-full-disk-access) below).
 
-The [website](https://derekdylu.github.io/DiskManager/#install) has the full step-by-step install guide.
+The [website](https://disk-manager.derekdylu.com/#install) has the full step-by-step install guide.
 
 Requirements: macOS 14 Sonoma or later, Apple Silicon. You can also build from source (see [Building](#building)).
 

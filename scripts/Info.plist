@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>zh_TW</string>
+	<key>CFBundleExecutable</key>
+	<string>DiskManager</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.dereklu.diskmanager</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundleName</key>
+	<string>DiskManager</string>
+	<key>CFBundleDisplayName</key>
+	<string>DiskManager</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.3.0</string>
+	<key>CFBundleVersion</key>
+	<string>3</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2026 Derek Lu</string>
+	<key>NSRemovableVolumesUsageDescription</key>
+	<string>DiskManager 需要存取外接儲存空間，以比對並同步 A、B 兩個儲存空間的檔案。</string>
+	<key>NSNetworkVolumesUsageDescription</key>
+	<string>DiskManager 需要存取網路磁碟區，以掃描並比對其中的檔案。</string>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>DiskManager 需要讀取桌面，以掃描並比對其中的檔案。</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>DiskManager 需要讀取「文件」，以掃描並比對其中的檔案。</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>DiskManager 需要讀取「下載項目」，以掃描並比對其中的檔案。</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+</dict>
+</plist>

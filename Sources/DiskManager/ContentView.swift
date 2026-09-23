@@ -449,17 +449,14 @@ struct FolderPickerRow: View {
     }
 
     private func volumeInfo(_ url: URL) -> String? {
-        guard let values = try? url.resourceValues(forKeys: [
-            .volumeNameKey, .volumeTotalCapacityKey, .volumeAvailableCapacityForImportantUsageKey,
-        ]) else { return nil }
+        guard let capacity = readVolumeCapacity(at: url) else { return nil }
         var parts: [String] = []
-        if let name = values.volumeName {
+        if let name = capacity.name {
             parts.append(tr("磁碟區：", "Volume: ") + name)
         }
-        if let total = values.volumeTotalCapacity,
-           let free = values.volumeAvailableCapacityForImportantUsage {
-            parts.append(tr("可用 \(formatBytes(free)) / 總容量 \(formatBytes(Int64(total)))",
-                            "\(formatBytes(free)) free of \(formatBytes(Int64(total)))"))
+        if let total = capacity.total, let free = capacity.available {
+            parts.append(tr("可用 \(formatBytes(free)) / 總容量 \(formatBytes(total))",
+                            "\(formatBytes(free)) free of \(formatBytes(total))"))
         }
         return parts.isEmpty ? nil : parts.joined(separator: "　")
     }

@@ -100,15 +100,13 @@ func topLevelBreakdown(of scan: ScanResult, cap: Int = 8) -> [BreakdownSlice] {
 }
 
 func makeDriveUsage(role: String, url: URL, scan: ScanResult) -> DriveUsageData {
-    let values = try? url.resourceValues(forKeys: [
-        .volumeNameKey, .volumeTotalCapacityKey, .volumeAvailableCapacityForImportantUsageKey,
-    ])
+    let capacity = readVolumeCapacity(at: url)
     return DriveUsageData(
         role: role,
         path: url.path,
-        volumeName: values?.volumeName ?? url.lastPathComponent,
-        total: Int64(values?.volumeTotalCapacity ?? 0),
-        free: values?.volumeAvailableCapacityForImportantUsage ?? 0,
+        volumeName: capacity?.name ?? url.lastPathComponent,
+        total: capacity?.total ?? 0,
+        free: capacity?.available ?? 0,
         breakdown: topLevelBreakdown(of: scan))
 }
 

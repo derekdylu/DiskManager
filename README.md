@@ -4,18 +4,28 @@
 
 A native macOS app (SwiftUI) to compare, sync and clean up two storage locations — external drives, local folders, or any two folders. It was originally built to manage two external drives kept in different places (A: 8 TB, B: 10 TB) that only occasionally get plugged into the same Mac. The UI is bilingual (Traditional Chinese / English) and can be switched live from the toolbar.
 
-**Website:** [derekdylu.github.io/DiskManager](https://derekdylu.github.io/DiskManager/)
+**[Website](https://derekdylu.github.io/DiskManager/)** · **[Download for Mac](https://github.com/derekdylu/DiskManager/releases/latest)** · [Install guide](https://derekdylu.github.io/DiskManager/#install)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/shots/en-dark-sync.jpg">
+  <img src="docs/assets/shots/en-light-sync.jpg" alt="DiskManager sync tab: mirror plan between two drives with diff counts, storage bars and a browsable diff tree">
+</picture>
 
 ## Download & install
 
 1. Download the latest `DiskManager-<version>.zip` from [Releases](https://github.com/derekdylu/DiskManager/releases), unzip it and drag `DiskManager.app` into Applications.
-2. The app is not notarized by Apple, so Gatekeeper blocks it on first launch. In Finder, **right-click the app › Open**, or click "Open Anyway" in **System Settings › Privacy & Security**. Alternatively, run:
+2. The app is not notarized by Apple, so Gatekeeper blocks it on first launch:
+   - **macOS 15 Sequoia and later**: open the app once and dismiss the warning, then go to **System Settings › Privacy & Security**, scroll to **Security** and click **Open Anyway**.
+   - **macOS 14 Sonoma**: in Finder, **right-click the app › Open**, then click **Open**.
+   - **Any version**: remove the quarantine flag in Terminal:
 
-   ```bash
-   xattr -dr com.apple.quarantine /Applications/DiskManager.app
-   ```
+     ```bash
+     xattr -dr com.apple.quarantine /Applications/DiskManager.app
+     ```
 
 3. Enable DiskManager under **System Settings › Privacy & Security › Full Disk Access** (see [Permissions](#permissions-full-disk-access) below).
+
+The [website](https://derekdylu.github.io/DiskManager/#install) has the full step-by-step install guide.
 
 Requirements: macOS 14 Sonoma or later, Apple Silicon. You can also build from source (see [Building](#building)).
 
@@ -51,6 +61,11 @@ Changing folder A or B after a plan has been previewed invalidates the plan imme
 
 ## Cleanup tab
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/shots/en-dark-cleanup.jpg">
+  <img src="docs/assets/shots/en-light-cleanup.jpg" alt="DiskManager cleanup tab: regenerable Final Cut media, caches, system clutter and disk images grouped into subcategories, plus duplicate detection">
+</picture>
+
 Finds removable junk in a storage space. Everything is listed for you to check first; items go to the Trash by default, and permanent deletion needs an extra confirmation.
 
 - **Project files (regenerable FCP / iMovie media)**: Render Files, Proxy Media, High Quality Media, and Peaks / Analysis / Thumbnail caches inside `.fcpbundle` / `.imovielibrary` libraries. **Original Media is never included.**
@@ -68,6 +83,11 @@ Each category is further grouped into **subcategories** (e.g. system clutter →
 The junk scan skips `_DiskManager_Archive` (the safety net) and `.Trashes`.
 
 ## AI analysis (chat panel)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/shots/en-dark-chat.jpg">
+  <img src="docs/assets/shots/en-light-chat.jpg" alt="DiskManager AI analysis panel answering which files are safe to delete, next to the cleanup report">
+</picture>
 
 "AI Analysis" in the toolbar opens a chat panel on the right where you can hand results to an LLM for analysis (which folders take the most space, whether extra files are safe to delete, which duplicate to keep …):
 

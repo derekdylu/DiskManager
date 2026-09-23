@@ -37,4 +37,4 @@ else
     codesign --force -s - "$APP"
 fi
 
-echo "完成：$APP"
+echo "Done: $APP"

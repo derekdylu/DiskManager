@@ -12,6 +12,12 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp .build/release/DiskManager "$APP/Contents/MacOS/DiskManager"
 cp scripts/Info.plist "$APP/Contents/Info.plist"
 
+# Localized Info.plist strings (e.g. privacy prompts): Info.plist holds the English base,
+# each scripts/<lang>.lproj/InfoPlist.strings overrides it for that language
+for lproj in scripts/*.lproj; do
+    cp -R "$lproj" "$APP/Contents/Resources/"
+done
+
 # App icon: build the .icns from scripts/AppIcon.png (1024x1024)
 ICONSET="$(mktemp -d)/AppIcon.iconset"
 mkdir -p "$ICONSET"

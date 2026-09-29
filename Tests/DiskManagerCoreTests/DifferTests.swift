@@ -37,7 +37,7 @@ final class DifferTests: XCTestCase {
     func testMtimeToleranceForFATFilesystems() {
         let source = makeResult([file("a.txt", size: 5, mtime: 1000)])
         let within = Differ.diff(source: source, dest: makeResult([file("a.txt", size: 5, mtime: 1001.5)]))
-        XCTAssertTrue(within.isEmpty, "2 秒以內的時間差不應觸發更新")
+        XCTAssertTrue(within.isEmpty, "An mtime difference within 2 seconds should not trigger an update")
 
         let beyond = Differ.diff(source: source, dest: makeResult([file("a.txt", size: 5, mtime: 1005)]))
         XCTAssertEqual(beyond.updates.count, 1)
@@ -107,10 +107,10 @@ final class DifferTests: XCTestCase {
     func testUnicodeNormalizationDoesNotCauseFalseDiff() {
         let nfc = "café.txt"                    // é = U+00E9
         let nfd = "cafe\u{0301}.txt"            // e + U+0301
-        XCTAssertNotEqual(Array(nfc.utf8), Array(nfd.utf8), "兩種形式的位元組應不同")
+        XCTAssertNotEqual(Array(nfc.utf8), Array(nfd.utf8), "The two forms should differ at the byte level")
         let plan = Differ.diff(
             source: makeResult([file(nfc, size: 5, mtime: 1000)]),
             dest: makeResult([file(nfd, size: 5, mtime: 1000)]))
-        XCTAssertTrue(plan.isEmpty, "同名檔案僅 Unicode 正規化不同時，不應視為差異")
+        XCTAssertTrue(plan.isEmpty, "Names that differ only in Unicode normalization should not count as a difference")
     }
 }

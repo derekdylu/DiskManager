@@ -80,7 +80,7 @@ final class SyncEngineTests: XCTestCase {
 
         // Scanning again should show both sides fully in sync
         let (planAfter, _) = try runSync()
-        XCTAssertTrue(planAfter.isEmpty, "同步後重新比對應為空計畫")
+        XCTAssertTrue(planAfter.isEmpty, "Re-comparing after sync should yield an empty plan")
     }
 
     func testUpdateOrphanAndArchive() throws {

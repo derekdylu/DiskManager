@@ -32,6 +32,7 @@ make app                                           # release bundle at build/Dis
 
 - Terminology: a storage space (儲存空間) can be any folder; don't write it as "external drive". A is the target space (the baseline, never modified, accent-highlighted); B is the working space that gets changed. The Swap button reverses them, so don't add mirrored modes (B→A, A−B). Modes: mirror, difference, union (in union neither side is highlighted).
 - Language: code comments, README, docs and script output are English. UI strings are bilingual inline pairs `tr("中文", "English")` (`Sources/DiskManager/L10n.swift`); never translate or drop either literal.
+- Info.plist strings shown by macOS (privacy usage descriptions) are English in `scripts/Info.plist` and Traditional Chinese in `scripts/zh-Hant.lproj/InfoPlist.strings`, which `build-app.sh` copies into the bundle; change both together.
 - AI chat: bring-your-own key for Anthropic or OpenAI, stored only in the Keychain (`KeychainStore`) and sent only to that provider's API. No third-party dependencies.
 
 ## Safety boundaries

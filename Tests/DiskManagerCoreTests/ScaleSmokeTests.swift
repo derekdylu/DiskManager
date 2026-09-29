@@ -7,7 +7,7 @@ import XCTest
 final class ScaleSmokeTests: XCTestCase {
     func testScanMemoryStaysBounded() throws {
         guard ProcessInfo.processInfo.environment["DM_SCALE_TEST"] == "1" else {
-            throw XCTSkip("需要 DM_SCALE_TEST=1 才執行")
+            throw XCTSkip("Set DM_SCALE_TEST=1 to run")
         }
         let root = FileManager.default.temporaryDirectory
             .appendingPathComponent("dm-scale-\(UUID().uuidString)")
@@ -43,7 +43,7 @@ final class ScaleSmokeTests: XCTestCase {
         let after = peakRSSMB()
         print("[scale] peak RSS before=\(before)MB after=\(after)MB delta=\(after - before)MB")
         // Before the autoreleasepool issue was fixed, the delta here started at several GB
-        XCTAssertLessThan(after - before, 1500, "掃描 8 萬個檔案的記憶體增量異常，疑似又出現堆積")
+        XCTAssertLessThan(after - before, 1500, "Memory growth while scanning 80k files is abnormal; objects are likely piling up again")
     }
 
     private func peakRSSMB() -> Int {

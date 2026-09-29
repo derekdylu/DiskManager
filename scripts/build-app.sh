@@ -27,8 +27,9 @@ rm -rf "$(dirname "$ICONSET")"
 # so macOS silently drops the grant each time the app is rebuilt. Signing with a real identity
 # (Apple Development / Developer ID) keeps the designated requirement stable and the grant survives.
 # Override with CODESIGN_IDENTITY=... ; falls back to ad-hoc when no identity is installed.
+# `|| true`: with no match grep exits 1, and pipefail + set -e would abort before the ad-hoc fallback.
 IDENTITY="${CODESIGN_IDENTITY:-$(security find-identity -v -p codesigning 2>/dev/null \
-    | grep -E 'Developer ID Application|Apple Development' | head -1 | sed -E 's/.*"(.*)"/\1/')}"
+    | grep -E 'Developer ID Application|Apple Development' | head -1 | sed -E 's/.*"(.*)"/\1/' || true)}"
 if [ -n "$IDENTITY" ]; then
     echo "Signing with: $IDENTITY"
     codesign --force --timestamp=none -s "$IDENTITY" "$APP"
